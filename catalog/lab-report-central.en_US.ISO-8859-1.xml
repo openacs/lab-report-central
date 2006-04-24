@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<message_catalog package_key="lab-report-central" package_version="0.1d" locale="en_US" charset="ISO-8859-1">
+
+  <msg key="add_instructor">Add Instructor</msg>
+  <msg key="add_instructor_to_list">Add instructor to list</msg>
+  <msg key="add_lab">Add Lab</msg>
+  <msg key="add_template">Add Template</msg>
+  <msg key="add_template_to_list">Add template to list</msg>
+  <msg key="admin">Admin</msg>
+  <msg key="create_lab">Create Lab</msg>
+  <msg key="create_report_template">Create Report Template</msg>
+  <msg key="create_template">Create Template</msg>
+  <msg key="delete">Delete</msg>
+  <msg key="description">Description</msg>
+  <msg key="edit">Edit</msg>
+  <msg key="edit_lab">Edit Lab</msg>
+  <msg key="help_enter_lab_description">Enter lab description.</msg>
+  <msg key="help_enter_lab_end_date">Enter the last day of the lab.</msg>
+  <msg key="help_enter_lab_name">Enter name for lab.</msg>
+  <msg key="help_enter_lab_start_date">Enter start date for the lab.</msg>
+  <msg key="help_enter_template_description">Enter a description for the report template.</msg>
+  <msg key="help_enter_template_name">Enter a name for the report template.</msg>
+  <msg key="help_search_users">Select &quot;Search&quot; then click on OK to search for a user, otherwise select a user from the list.</msg>
+  <msg key="help_select_lab_instructor">Select a lab instructor from the list.</msg>
+  <msg key="instructor">Instructor</msg>
+  <msg key="instructors">Instructors</msg>
+  <msg key="lab">Lab</msg>
+  <msg key="lab_duration">Lab Duration</msg>
+  <msg key="lab_end_date">End Date</msg>
+  <msg key="lab_report_templates">Lab Report Templates</msg>
+  <msg key="lab_start_date">Start Date</msg>
+  <msg key="labs">Labs</msg>
+  <msg key="name">Name</msg>
+  <msg key="no_instructors_created">No instructors have been created.</msg>
+  <msg key="no_lab_report_templates_added">No lab report templates have been added.</msg>
+  <msg key="no_lab_report_templates_created">No lab report templates have been created.</msg>
+  <msg key="no_labs_created">No labs have been created.</msg>
+  <msg key="no_report_templates_created">No report templates have been created.</msg>
+  <msg key="no_templates_created">No templates have been created.</msg>
+  <msg key="remove_instructor">Remove instructor</msg>
+  <msg key="remove_template">Remove report template.</msg>
+  <msg key="report_sections">Report Sections</msg>
+  <msg key="report_templates">Report Templates</msg>
+  <msg key="section">Section</msg>
+  <msg key="sections">Sections</msg>
+  <msg key="template">Template</msg>
+  <msg key="template_sections">Template Sections</msg>
+  <msg key="templates">Templates</msg>
+  <msg key="to">to</msg>
+  <msg key="view">View</msg>
+  <msg key="want_to_delete_instructor">Continue with deleting the instructor?</msg>
+  <msg key="want_to_delete_lab">Continue with deleting the lab?</msg>
+  <msg key="want_to_delete_template">Continue with removing the report template?</msg>
+</message_catalog>

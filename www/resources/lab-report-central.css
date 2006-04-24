@@ -1,0 +1,144 @@
+/* Lab Container */
+#lrc-lab-container {
+	margin-left: 30px;
+}
+
+#lrc-lab-container ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	font-family: verdana, arial, sans-serif;
+}
+
+#lrc-lab-container li {
+	margin: 0;
+}
+
+/* Year */
+#lrc-lab-container ul li {
+	color: #686868;
+	font-size: 18px;
+	font-weight: bold;
+	padding-top: 20px;
+	padding-bottom: 6px;
+}
+
+#lrc-lab-container ul ul {
+	margin-left: 30px;
+	padding: 0;
+	list-style-type: none;
+}
+
+/* Lab */
+#lrc-lab-container ul ul li {
+	color: #000;
+	font-size: 12px;
+	display: block;
+	border-left: 1em solid #686868;
+	border-bottom: 1px solid #686868;
+	padding: 4px 8px;
+	width: 50em;
+	margin-bottom: 5px;
+}
+
+#lrc-lab-container ul ul li img {
+	vertical-align: bottom;
+	border: 0;
+	text-decoration: none;
+	margin-right: 3px;
+	margin-left: 3px;
+}
+
+#lrc-lab-container ul ul li span.label {
+	margin-left: 3em;
+	float:left;
+}
+
+#lrc-lab-container ul ul li span.options {
+	float: right;
+}
+
+
+/* Styles for lists */
+#lrc-list-container table {
+	width: 100%;
+}
+
+#lrc-list-container table tr td {
+	font-weight: bold;
+	font-size: 12px;
+	padding: 5px 10px 5px 10px;
+	margin: 1px;
+	vertical-align: top;
+}
+
+#lrc-list-container table tr td.label {
+	background-color: #CCCCCC;
+	width: 160px;
+}
+
+#lrc-list-container table tr td.value {
+	background-color: #F0F0F0;
+}
+
+/* Report Container */
+#lrc-report-container {
+	margin-left: 30px;
+}
+
+#lrc-report-container ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	font-family: verdana, arial, sans-serif;
+}
+
+#lrc-report-container li {
+	margin: 0;
+}
+
+/* Report */
+#lrc-report-container ul.report li {
+	color: #000;
+	font-size: 12px;
+	display: block;
+	border-left: 1em solid #686868;
+	border-bottom: 1px solid #686868;
+	padding: 4px 8px;
+	width: 50em;
+	margin-bottom: 5px;
+}
+
+#lrc-report-container ul.report li img {
+	vertical-align: bottom;
+	border: 0;
+	text-decoration: none;
+	margin-right: 3px;
+	margin-left: 3px;
+}
+
+#lrc-report-container ul.report li span.label {
+	margin-left: 3em;
+	float:left;
+}
+
+#lrc-report-container ul.report li span.options {
+	float: right;
+}
+
+#lrc-report-container ul li.notice {
+	border: 3px solid #FF6600;
+	margin: 0px auto;
+	margin-top: 2em;
+	padding: 5px;
+	width: 280px;
+	text-align: center;
+	background-color: #FF9966;
+	font-size: 12px;
+}
+
+
+/* Global styles */
+.spacer {
+	clear: both;
+}
