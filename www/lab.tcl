@@ -25,8 +25,9 @@ if { [info exists description] } {
 
 db_multirow -extend { view_url edit_url delete_url } rt rt {} {
     set view_url [export_vars -url -base template {template_id}]
-    set edit_url [export_vars -url -base template-ae { lab_id }]
-    set delete_url ""
+    set edit_url [export_vars -url -base template-ae {lab_id}]
+    set delete_url [export_vars -url \
+			-base detach-template {lab_id template_id}]
 }
 
 set create_url [export_vars -url -base attach-template { lab_id }]
