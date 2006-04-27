@@ -4,12 +4,18 @@
 <link rel="stylesheet" type="text/css" href="/resources/lab-report-central/lab-report-central.css" media="all">
 </property>
 
-<div id="lrc-lab-container">
-  <if @create_p@>
+<if @create_p@>
+<div id="lrc-actions-container">
   <ul>
+    <li>#lab-report-central.actions#</li>
     <li><a class="button" href="lab-ae">#lab-report-central.create_lab#</a></li>
+    <li><a class="button" href="templates">#lab-report-central.view_report_templates#</a></li>
   </ul>
-  </if>
+</div>
+<div class="spacer"></div>
+</if>
+
+<div id="lrc-lab-container">
 
   <multiple name="labs">
   <ul id="years">

@@ -78,4 +78,11 @@
      </querytext>
    </fullquery>
 
+   <fullquery name="lab_report_central::unmapped_templates_get_options.templates">
+     <querytext>
+       SELECT t.name, t.template_id
+       FROM lrc_template t
+       WHERE t.template_id NOT IN (select template_id from lrc_lab_template_map where lab_id = :lab_id)
+     </querytext>
+   </fullquery>
 </queryset>

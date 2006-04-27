@@ -33,3 +33,17 @@ ad_proc lab_report_central::instructor_group_id {} {
 } {
     return [db_string instructor_group {} -default ""]
 }
+
+ad_proc -private lab_report_central::unmapped_templates_get_options {
+    -lab_id
+} {
+    Retrieves an options list of report templates that have not been
+    mapped to the specified lab_id.
+
+    @param lab_id The ID of a lab.
+    @return Options list of report templates.
+} {
+    set templates_list [db_list_of_lists templates {}]
+
+    return $templates_list
+}

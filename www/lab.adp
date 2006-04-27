@@ -31,18 +31,17 @@
 <div id="lrc-report-container">
   <if @create_p@>
   <ul>
-    <li><a class="button" href="@create_url@">#lab-report-central.add_template#</a></li>
+    <li><a class="button" href="@create_url@">#lab-report-central.attach_template#</a></li>
   </ul>
   </if>
 
   <multiple name="rt">
-  <ul id="report">
+  <ul class="report">
     <li>
-      <span class="label">@rt.name@</span>
+      <span class="label">@rt.template_name@</span>
       <span class="options">
       <a class="button" href="@rt.view_url@">#lab-report-central.view#</a>
-      <if @modify_p@><a class="button" href="@rt.edit_url@">#lab-report-central.edit#</a>&nbsp;</if>
-      <if @delete_p@><a class="button" href="@rt.delete_url@" onclick="return confirm('#lab-report-central.want_to_delete_lab#')">#lab-report-central.delete#</a></if>
+      <if @delete_p@><a class="button" href="@rt.delete_url@" onclick="return confirm('#lab-report-central.want_to_remove_template#')">#lab-report-central.remove#</a></if>
       </span>
       <div class="spacer"></div>
     </li>

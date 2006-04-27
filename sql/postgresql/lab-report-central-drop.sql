@@ -60,6 +60,7 @@ drop table lrc_section;
 drop table lrc_template;
 drop table lrc_groups;
 drop table lrc_template_section_map;
+drop table lrc_lab_template_map;
 
 delete from acs_objects where object_type='lrc_lab';
 delete from acs_objects where object_type='lrc_template';

@@ -135,6 +135,17 @@ create table lrc_groups (
 				on delete cascade
 );
 
+create table lrc_lab_template_map (
+	lab_id			integer
+				constraint lrc_lt_map_lab_id_fk
+				references lrc_lab (lab_id)
+				on delete cascade,
+	template_id		integer
+				constraint lrc_lt_map_template_id_fk
+				references lrc_template (template_id)
+				on delete cascade
+);
+
 create table lrc_template_section_map (
 	template_id		integer
 				constraint lrc_ts_map_template_id_fk

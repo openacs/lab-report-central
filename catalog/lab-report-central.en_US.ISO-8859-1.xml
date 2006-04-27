@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <message_catalog package_key="lab-report-central" package_version="0.1d" locale="en_US" charset="ISO-8859-1">
 
+  <msg key="actions">Actions:</msg>
   <msg key="add_instructor">Add Instructor</msg>
   <msg key="add_instructor_to_list">Add instructor to list</msg>
   <msg key="add_lab">Add Lab</msg>
   <msg key="add_template">Add Template</msg>
   <msg key="add_template_to_list">Add template to list</msg>
   <msg key="admin">Admin</msg>
+  <msg key="attach_template">Attach Template</msg>
   <msg key="create_lab">Create Lab</msg>
   <msg key="create_report_template">Create Report Template</msg>
   <msg key="create_template">Create Template</msg>
@@ -14,6 +16,7 @@
   <msg key="description">Description</msg>
   <msg key="edit">Edit</msg>
   <msg key="edit_lab">Edit Lab</msg>
+  <msg key="edit_template">Edit Template</msg>
   <msg key="help_enter_lab_description">Enter lab description.</msg>
   <msg key="help_enter_lab_end_date">Enter the last day of the lab.</msg>
   <msg key="help_enter_lab_name">Enter name for lab.</msg>
@@ -22,6 +25,7 @@
   <msg key="help_enter_template_name">Enter a name for the report template.</msg>
   <msg key="help_search_users">Select &quot;Search&quot; then click on OK to search for a user, otherwise select a user from the list.</msg>
   <msg key="help_select_lab_instructor">Select a lab instructor from the list.</msg>
+  <msg key="help_select_template_to_attach">Select a lab report template from the list to attach to the lab.  If the list is empty, then you will need to create a template first.</msg>
   <msg key="instructor">Instructor</msg>
   <msg key="instructors">Instructors</msg>
   <msg key="lab">Lab</msg>
@@ -37,6 +41,7 @@
   <msg key="no_labs_created">No labs have been created.</msg>
   <msg key="no_report_templates_created">No report templates have been created.</msg>
   <msg key="no_templates_created">No templates have been created.</msg>
+  <msg key="remove">Remove</msg>
   <msg key="remove_instructor">Remove instructor</msg>
   <msg key="remove_template">Remove report template.</msg>
   <msg key="report_sections">Report Sections</msg>
@@ -48,7 +53,10 @@
   <msg key="templates">Templates</msg>
   <msg key="to">to</msg>
   <msg key="view">View</msg>
+  <msg key="view_instructors">View Instructors</msg>
+  <msg key="view_report_templates">View Report Templates</msg>
   <msg key="want_to_delete_instructor">Continue with deleting the instructor?</msg>
   <msg key="want_to_delete_lab">Continue with deleting the lab?</msg>
   <msg key="want_to_delete_template">Continue with removing the report template?</msg>
+  <msg key="want_to_remove_template">Continue with removing report template from lab?</msg>
 </message_catalog>

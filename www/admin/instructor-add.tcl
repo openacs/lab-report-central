@@ -30,7 +30,7 @@ ad_form -name instructor -cancel_url $return_url -form {
     group::add_member -group_id [lab_report_central::instructor_group_id] \
 	-user_id $user
     
-    # TODO: Add privileges for new member.
+    # Add privileges for new member.
     permission::grant -party_id $user \
 	-object_id $package_id \
 	-privilege lab_report_central_admin
