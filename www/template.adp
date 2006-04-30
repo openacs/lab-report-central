@@ -25,7 +25,7 @@
   <ul>
     <li class="name">@section.section_name@</li>
     <li class="description">@section.section_desc;noquote@</li>
-    <li class="edit"><a class="button" href="@section.edit_url@">#lab-report-central.edit#</a></li>
+    <if @create_p@><li class="edit"><a class="button" href="@section.edit_url@">#lab-report-central.edit#</a></li></if>
   </ul>
   </multiple>
 </div>
