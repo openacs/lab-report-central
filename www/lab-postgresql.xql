@@ -24,4 +24,12 @@
      </querytext>
    </fullquery>
 
+   <fullquery name="select_students">
+     <querytext>
+       SELECT u.user_id AS student_id, u.first_names, u.last_name, u.email
+       FROM cc_users u, lrc_lab_student_map m
+       WHERE u.user_id = m.user_id
+       AND m.lab_id = :lab_id
+     </querytext>
+   </fullquery>
 </queryset>

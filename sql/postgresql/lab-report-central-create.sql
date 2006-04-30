@@ -150,6 +150,17 @@ create table lrc_lab_template_map (
 				on delete cascade
 );
 
+create table lrc_lab_student_map (
+	lab_id			integer
+				constraint lrc_lab_student_map_lab_id_fk
+				references lrc_lab (lab_id)
+				on delete cascade,
+	user_id			integer
+				constraint lrc_lab_student_map_user_id_fk
+				references users (user_id)
+				on delete cascade
+);
+
 
 --
 -- Create functions

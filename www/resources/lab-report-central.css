@@ -1,3 +1,9 @@
+/* Global styles */
+.spacer {
+	clear: both;
+}
+
+
 /* Action Container */
 #lrc-actions-container {
 	margin: 0px auto;
@@ -233,10 +239,4 @@
 
 #lrc-section-container ul li.edit {
 	text-align: right;
-}
-
-
-/* Global styles */
-.spacer {
-	clear: both;
 }

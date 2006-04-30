@@ -21,11 +21,10 @@ ad_proc -private lab_report_central::install::package_install {} {
 }
 
 ad_proc -private lab_report_central::install::create_instructor_group {} {
-    Creates the lab group types.
+    Creates the lab group instructor type.
 } {
     set magic_name "instructors"
     set group_id [group::new -group_name "[_ lab-report-central.instructor]"]
 
     db_dml insert {}
 }
-

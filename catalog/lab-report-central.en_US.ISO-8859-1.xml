@@ -6,6 +6,7 @@
   <msg key="add_instructor_to_list">Add instructor to list</msg>
   <msg key="add_lab">Add Lab</msg>
   <msg key="add_section">Add Section</msg>
+  <msg key="add_student">Add Student</msg>
   <msg key="add_template">Add Template</msg>
   <msg key="add_template_to_list">Add template to list</msg>
   <msg key="admin">Admin</msg>
@@ -15,9 +16,11 @@
   <msg key="create_section">Create Section</msg>
   <msg key="create_template">Create Template</msg>
   <msg key="delete">Delete</msg>
+  <msg key="delete_section">Delete Section</msg>
   <msg key="description">Description</msg>
   <msg key="edit">Edit</msg>
   <msg key="edit_lab">Edit Lab</msg>
+  <msg key="edit_section">Edit Section</msg>
   <msg key="edit_template">Edit Template</msg>
   <msg key="help_enter_lab_description">Enter lab description.</msg>
   <msg key="help_enter_lab_end_date">Enter the last day of the lab.</msg>
@@ -52,6 +55,7 @@
   <msg key="report_templates">Report Templates</msg>
   <msg key="section">Section</msg>
   <msg key="sections">Sections</msg>
+  <msg key="students">Students</msg>
   <msg key="template">Template</msg>
   <msg key="template_sections">Template Sections</msg>
   <msg key="templates">Templates</msg>
@@ -61,6 +65,8 @@
   <msg key="view_report_templates">View Report Templates</msg>
   <msg key="want_to_delete_instructor">Continue with deleting the instructor?</msg>
   <msg key="want_to_delete_lab">Continue with deleting the lab?</msg>
+  <msg key="want_to_delete_section">Continue with deleting the last section?</msg>
   <msg key="want_to_delete_template">Continue with removing the report template?</msg>
+  <msg key="want_to_remove_student">Continue with removing student from the lab?</msg>
   <msg key="want_to_remove_template">Continue with removing report template from lab?</msg>
 </message_catalog>

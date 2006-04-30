@@ -47,3 +47,17 @@ ad_proc -private lab_report_central::unmapped_templates_get_options {
 
     return $templates_list
 }
+
+ad_proc lab_report_central::unmapped_students_get_options {
+    -lab_id
+} {
+    Retrieves an options list of users that aren't mapped to the
+    given lab.
+
+    @param lab_id Lab ID.
+} {
+    set users_list [db_list_of_lists students {}]
+    set users_list [concat [list [list Search ":search:"]] $users_list]
+
+    return $users_list
+}

@@ -85,4 +85,35 @@
        WHERE t.template_id NOT IN (select template_id from lrc_lab_template_map where lab_id = :lab_id)
      </querytext>
    </fullquery>
+
+   <fullquery name="lab_student_search">
+     <querytext>
+       select distinct u.first_names || ' ' || u.last_name || ' (' || u.email || ')' as name, u.user_id
+      from   cc_users u
+      where  lower(coalesce(u.first_names || ' ', '')  ||
+             coalesce(u.last_name || ' ', '') ||
+             u.email || ' ' ||
+             coalesce(u.screen_name, '')) like lower('%'||:value||'%')
+       AND u.user_id NOT IN (
+           SELECT user_id
+           FROM lrc_lab_student_map m
+           WHERE m.lab_id = $lab_id
+       )
+       ORDER by name
+     </querytext>
+   </fullquery>
+
+   <fullquery name="lab_report_central::unmapped_students_get_options.students">
+     <querytext>
+       select distinct u.first_names || ' ' || u.last_name || ' (' || u.email || ')' as name, u.user_id
+      from   cc_users u
+      WHERE u.user_id NOT IN (
+           SELECT user_id
+           FROM lrc_lab_student_map m
+           WHERE m.lab_id = :lab_id
+       )
+       ORDER by name
+     </querytext>
+   </fullquery>
+
 </queryset>
