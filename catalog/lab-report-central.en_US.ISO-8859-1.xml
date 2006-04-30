@@ -32,6 +32,7 @@
   <msg key="help_enter_template_name">Enter a name for the report template.</msg>
   <msg key="help_search_users">Select &quot;Search&quot; then click on OK to search for a user, otherwise select a user from the list.</msg>
   <msg key="help_select_lab_instructor">Select a lab instructor from the list.</msg>
+  <msg key="help_select_student_to_attach">Select a student to add to the lab.</msg>
   <msg key="help_select_template_to_attach">Select a lab report template from the list to attach to the lab.  If the list is empty, then you will need to create a template first.</msg>
   <msg key="instructor">Instructor</msg>
   <msg key="instructors">Instructors</msg>
@@ -47,6 +48,7 @@
   <msg key="no_lab_report_templates_created">No lab report templates have been created.</msg>
   <msg key="no_labs_created">No labs have been created.</msg>
   <msg key="no_report_templates_created">No report templates have been created.</msg>
+  <msg key="no_students_added">No students have been added to this lab.</msg>
   <msg key="no_templates_created">No templates have been created.</msg>
   <msg key="remove">Remove</msg>
   <msg key="remove_instructor">Remove instructor</msg>
@@ -55,6 +57,7 @@
   <msg key="report_templates">Report Templates</msg>
   <msg key="section">Section</msg>
   <msg key="sections">Sections</msg>
+  <msg key="student">Student</msg>
   <msg key="students">Students</msg>
   <msg key="template">Template</msg>
   <msg key="template_sections">Template Sections</msg>
