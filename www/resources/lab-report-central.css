@@ -164,6 +164,78 @@
 }
 
 
+/* Navlist styles */
+#lrc-navlist {
+	margin: 0px auto;
+	width: 100px;
+	margin-top: 1em;
+}
+
+#lrc-navlist .float {
+	float: left;
+	width: 30px;
+	padding: 5px;
+}
+
+#lrc-navlist a {
+	padding: 3px 10px;
+	font-weight: bold;
+	font-size: 20pt;
+	font-family: "Courier New";
+}
+
+#lrc-navlist a:link {
+	color: #FFF;
+	background-color: #666;
+	text-decoration: none;
+}
+
+#lrc-navlist a:visited {
+	color: #FFF;
+	background-color: #666;
+	text-decoration: none;
+}
+
+#lrc-navlist a:hover {
+	color: #FFF;
+	background-color: #CCC;
+	text-decoration: none;
+}
+
+
+/* Section List Styles */
+#lrc-section-container {
+	margin-top: 2em;
+}
+
+#lrc-section-container ul {
+	list-style-type: none;
+	font-family: verdana, arial, sans-serif;
+	border: 3px solid #336699;
+	margin: 0px auto;
+	margin-top: 1em;
+	padding: 5px;
+	width: 400px;
+	background-color: #99CCFF;
+	font-size: 12px;
+}
+
+#lrc-section-container ul li.name {
+	text-align: center;
+	font-weight: bold;
+	margin-bottom: 6px;
+	font-size: 16px;
+}
+
+#lrc-section-container ul li.description {
+	margin-bottom: 6px;
+}
+
+#lrc-section-container ul li.edit {
+	text-align: right;
+}
+
+
 /* Global styles */
 .spacer {
 	clear: both;

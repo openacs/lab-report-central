@@ -36,4 +36,22 @@ set modify_p [permission::permission_p -party_id $user_id \
 		  -object_id $package_id \
 		  -privilege lab_report_central_admin_modify]
 
+db_multirow -extend {edit_url} section select_sections {} {
+    if { [info exists section_desc] } {
+	set section_desc \
+	    [template::util::richtext::get_property html_value $section_desc]
+    } else {
+	set section_desc ""
+    }
+
+    set edit_url [export_vars -url -base section-ae {template_id section_id}]
+}
+
+set create_section_url [export_vars -url -base section-ae {template_id}]
+
+# section_id is the last section_id retrieved from the db_multirow block
+# above.
+set delete_section_url [export_vars -url -base section-del {template_id section_id}]
+set confirm_msg "[_ lab-report-central.want_to_delete_section]"
+
 ad_return_template

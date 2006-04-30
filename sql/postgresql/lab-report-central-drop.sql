@@ -23,15 +23,13 @@ select acs_privilege__drop_privilege('lab_report_central_read');
 --
 -- Drop functions
 --
-drop function lrc_lab__name (integer);
-drop function lrc_lab__del (integer);
-drop function lrc_lab__new (
+drop function lrc_section__name (integer);
+drop function lrc_section__del (integer);
+drop function lrc_section__new (
+	integer,
 	integer,
 	varchar,
 	text,
-	integer,
-	timestamptz,
-	timestamptz,
 	integer,
 	timestamptz,
 	integer,
@@ -52,6 +50,22 @@ drop function lrc_template__new (
 	integer
 );
 
+drop function lrc_lab__name (integer);
+drop function lrc_lab__del (integer);
+drop function lrc_lab__new (
+	integer,
+	varchar,
+	text,
+	integer,
+	timestamptz,
+	timestamptz,
+	integer,
+	timestamptz,
+	integer,
+	varchar,
+	integer
+);
+
 --
 -- Drop tables
 --
@@ -59,7 +73,6 @@ drop table lrc_lab;
 drop table lrc_section;
 drop table lrc_template;
 drop table lrc_groups;
-drop table lrc_template_section_map;
 drop table lrc_lab_template_map;
 
 delete from acs_objects where object_type='lrc_lab';

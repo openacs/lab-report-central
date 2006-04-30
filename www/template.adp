@@ -20,3 +20,26 @@
   </table>
 </div>
 
+<div id="lrc-section-container">
+  <multiple name="section">
+  <ul>
+    <li class="name">@section.section_name@</li>
+    <li class="description">@section.section_desc;noquote@</li>
+    <li class="edit"><a class="button" href="@section.edit_url@">#lab-report-central.edit#</a></li>
+  </ul>
+  </multiple>
+</div>
+
+<div id="lrc-navlist">
+  <if @create_p@>
+    <div class="float">
+      <a href="@create_section_url@" title="#lab-report-central.add_section#">+</a>
+    </div>
+    <if @section:rowcount@ gt 0>
+    <div class="float">
+      <a href="@delete_section_url@" title="#lab-report-central.delete_section#" onclick="return confirm('@confirm_msg;noquote@');">-</a>
+    </div>
+    </if>
+  </if>
+</div>
+<div class="spacer"></div>

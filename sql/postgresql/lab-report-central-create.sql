@@ -113,6 +113,10 @@ create table lrc_section (
 				references acs_objects (object_id)
 				constraint lrc_section_pk
 				primary key,
+	template_id		integer
+				constraint lrc_section_template_id_fk
+				references lrc_template (template_id)
+				on delete cascade,
 	name			varchar (5120)
 				constraint lrc_section_name_nn
 				not null,
@@ -146,16 +150,6 @@ create table lrc_lab_template_map (
 				on delete cascade
 );
 
-create table lrc_template_section_map (
-	template_id		integer
-				constraint lrc_ts_map_template_id_fk
-				references lrc_template (template_id)
-				on delete cascade,
-	section_id		integer
-				constraint lrc_ts_map_section_id_fk
-				references lrc_section (section_id)
-				on delete cascade
-);
 
 --
 -- Create functions
@@ -394,5 +388,122 @@ begin
         	WHERE template_id = p_template_id;
 
     	return v_template_name;
+end;
+' language 'plpgsql';
+
+
+select define_function_args('lrc_section__new','section_id,template_id,name,description,package_id,creation_date;now,creation_user,creation_ip,context_id');
+
+create function lrc_section__new (
+	integer,
+	integer,
+	varchar,
+	text,
+	integer,
+	timestamptz,
+	integer,
+	varchar,
+	integer
+) returns integer as '
+declare
+	p_section_id		alias for $1;        	-- default null
+	p_template_id		alias for $2;
+    	p_name			alias for $3;
+    	p_description           alias for $4;
+	p_package_id		alias for $5;
+    	p_creation_date         alias for $6;        	-- default now()
+    	p_creation_user         alias for $7;        	-- default null
+    	p_creation_ip           alias for $8;		-- default null
+    	p_context_id            alias for $9;		-- default null
+
+    	v_section_id           lrc_section.section_id%TYPE;
+	v_inst_group_id		integer;
+begin
+
+    	v_section_id := acs_object__new (
+        	p_section_id,
+        	''lrc_section'',
+        	p_creation_date,
+        	p_creation_user,
+        	p_creation_ip,
+        	p_context_id
+    	);
+
+    	INSERT INTO lrc_section (
+		section_id,
+       		template_id,
+		name,
+		description,
+	        package_id
+    	) VALUES (
+		v_section_id,
+        	p_template_id,
+		p_name,
+		p_description,
+        	p_package_id
+    	);
+
+    	SELECT group_id into v_inst_group_id
+      	FROM lrc_groups
+        WHERE magic_name = ''instructors'';
+
+	-- Grant permissions to instructors on this object.
+    	PERFORM acs_permission__grant_permission(
+          	v_section_id,
+          	v_inst_group_id,
+	        ''lab_report_central_read''
+    	);
+
+    	PERFORM acs_permission__grant_permission(
+          	v_section_id,
+          	v_inst_group_id,
+          	''lab_report_central_write''
+    	);
+
+    	PERFORM acs_permission__grant_permission(
+          	v_section_id,
+          	v_inst_group_id,
+          	''lab_report_central_admin''
+    	);
+
+    	return v_section_id;
+
+end;' language 'plpgsql';
+
+
+select define_function_args('lrc_section__del','section_id');
+
+create function lrc_section__del (integer)
+returns integer as '
+declare
+	p_section_id          	alias for $1;
+begin
+    	DELETE FROM acs_permissions
+        	WHERE object_id = p_section_id;
+
+    	DELETE FROM lrc_section
+           	WHERE section_id = p_section_id;
+
+    	raise NOTICE ''Deleting section...'';
+    	PERFORM acs_object__delete(p_section_id);
+
+    	return 0;
+
+end;' language 'plpgsql';
+
+
+select define_function_args('lrc_section__name','section_id');
+
+create function lrc_section__name (integer)
+returns varchar as '
+declare
+    	p_section_id      		alias for $1;
+    	v_section_name    		lrc_section.name%TYPE;
+begin
+    	SELECT name INTO v_section_name
+        	FROM lrc_section
+        	WHERE section_id = p_section_id;
+
+    	return v_section_name;
 end;
 ' language 'plpgsql';
