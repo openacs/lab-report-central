@@ -67,6 +67,19 @@ select acs_object_type__create_type (
     null
    );
 
+select acs_object_type__create_type (
+    'lrc_resource',
+    '#lab-report-central.resource#',
+    '#lab-report-central.resources#',
+    'acs_object',
+    'lrc_resource',
+    'resource_id',
+    null,
+    'f',
+    null,
+    null
+   );
+
 --
 -- Create tables
 --
@@ -123,6 +136,27 @@ create table lrc_section (
 	description		text,
 	package_id		integer
 				constraint lrc_section_package_id_fk
+				references apm_packages (package_id)
+				on delete cascade
+);
+
+create table lrc_resource (
+	resource_id		integer
+				constraint lrc_resource_resource_id_fk
+				references acs_objects (object_id)
+				constraint lrc_resource_pk
+				primary key,
+	section_id		integer
+				constraint lrc_resource_section_id_fk
+				references lrc_section (section_id)
+				on delete cascade,
+	name			varchar (5120)
+				constraint lrc_resource_name_nn
+				not null,
+	url			varchar (5120),
+	description		text,
+	package_id		integer
+				constraint lrc_resource_package_id_fk
 				references apm_packages (package_id)
 				on delete cascade
 );
@@ -516,5 +550,127 @@ begin
         	WHERE section_id = p_section_id;
 
     	return v_section_name;
+end;
+' language 'plpgsql';
+
+
+select define_function_args('lrc_resource__new','resource_id,section_id,name,url,description,package_id,creation_date;now,creation_user,creation_ip,context_id');
+
+create function lrc_resource__new (
+	integer,
+	integer,
+	varchar,
+	varchar,
+	text,
+	integer,
+	timestamptz,
+	integer,
+	varchar,
+	integer
+) returns integer as '
+declare
+	p_resource_id		alias for $1;        	-- default null
+	p_section_id		alias for $2;
+    	p_name			alias for $3;
+	p_url			alias for $4;
+    	p_description           alias for $5;
+	p_package_id		alias for $6;
+    	p_creation_date         alias for $7;        	-- default now()
+    	p_creation_user         alias for $8;        	-- default null
+    	p_creation_ip           alias for $9;		-- default null
+    	p_context_id            alias for $10;		-- default null
+
+    	v_resource_id           lrc_resource.resource_id%TYPE;
+	v_inst_group_id		integer;
+begin
+
+    	v_resource_id := acs_object__new (
+        	p_resource_id,
+        	''lrc_resource'',
+        	p_creation_date,
+        	p_creation_user,
+        	p_creation_ip,
+        	p_context_id
+    	);
+
+    	INSERT INTO lrc_resource (
+		resource_id,
+       		section_id,
+		name,
+		url,
+		description,
+	        package_id
+    	) VALUES (
+		v_resource_id,
+        	p_section_id,
+		p_name,
+		p_url,
+		p_description,
+        	p_package_id
+    	);
+
+    	SELECT group_id into v_inst_group_id
+      	FROM lrc_groups
+        WHERE magic_name = ''instructors'';
+
+	-- Grant permissions to instructors on this object.
+    	PERFORM acs_permission__grant_permission(
+          	v_resource_id,
+          	v_inst_group_id,
+	        ''lab_report_central_read''
+    	);
+
+    	PERFORM acs_permission__grant_permission(
+          	v_resource_id,
+          	v_inst_group_id,
+          	''lab_report_central_write''
+    	);
+
+    	PERFORM acs_permission__grant_permission(
+          	v_resource_id,
+          	v_inst_group_id,
+          	''lab_report_central_admin''
+    	);
+
+    	return v_resource_id;
+
+end;' language 'plpgsql';
+
+
+select define_function_args('lrc_resource__del','resource_id');
+
+create function lrc_resource__del (integer)
+returns integer as '
+declare
+	p_resource_id          	alias for $1;
+begin
+    	raise NOTICE ''Deleting resource...'';
+
+    	DELETE FROM acs_permissions
+        	WHERE object_id = p_resource_id;
+
+    	DELETE FROM lrc_resource
+           	WHERE resource_id = p_resource_id;
+
+    	PERFORM acs_object__delete(p_resource_id);
+
+    	return 0;
+
+end;' language 'plpgsql';
+
+
+select define_function_args('lrc_resource__name','resource_id');
+
+create function lrc_resource__name (integer)
+returns varchar as '
+declare
+    	p_resource_id      		alias for $1;
+    	v_resource_name    		lrc_resource.name%TYPE;
+begin
+    	SELECT name INTO v_resouce_name
+        	FROM lrc_resource
+        	WHERE resource_id = p_resource_id;
+
+    	return v_resource_name;
 end;
 ' language 'plpgsql';

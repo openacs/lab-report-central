@@ -20,12 +20,16 @@
   </table>
 </div>
 
+<if @section:rowcount@ eq 0>
+<div class="notice">#lab-report-central.notice_currently_no_sections#</div>
+</if>
+
 <div id="lrc-section-container">
   <multiple name="section">
   <ul>
     <li class="name">@section.section_name@</li>
     <li class="description">@section.section_desc;noquote@</li>
-    <if @create_p@><li class="edit"><a class="button" href="@section.edit_url@">#lab-report-central.edit#</a></li></if>
+    <if @create_p@><li class="edit"><a class="button" href="@section.details_url@">#lab-report-central.edit_details#</a> <a class="button" href="@section.resources_url@">#lab-report-central.edit_resources#</a></li></if>
   </ul>
   </multiple>
 </div>

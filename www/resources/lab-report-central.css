@@ -3,6 +3,16 @@
 	clear: both;
 }
 
+.notice {
+	border: 3px solid #FF6600;
+	margin: 0px auto;
+	margin-top: 2em;
+	padding: 5px;
+	width: 280px;
+	text-align: center;
+	background-color: #FF9966;
+	font-size: 12px;
+}
 
 /* Action Container */
 #lrc-actions-container {
@@ -238,5 +248,38 @@
 }
 
 #lrc-section-container ul li.edit {
+	text-align: right;
+}
+
+
+/* Resource List Styles */
+#lrc-resource-container {
+	margin-top: 2em;
+}
+
+#lrc-resource-container ul {
+	list-style-type: none;
+	font-family: verdana, arial, sans-serif;
+	border: 3px solid #339933;
+	margin: 0px auto;
+	margin-top: 1em;
+	padding: 5px;
+	width: 400px;
+	background-color: #CCFF99;
+	font-size: 12px;
+}
+
+#lrc-resource-container ul li.name {
+	text-align: center;
+	font-weight: bold;
+	margin-bottom: 6px;
+	font-size: 16px;
+}
+
+#lrc-resource-container ul li.description {
+	margin-bottom: 6px;
+}
+
+#lrc-resource-container ul li.edit {
 	text-align: right;
 }
