@@ -27,8 +27,8 @@
            SET name = :name,
 	   description = :description,
 	   instructor_id = :instructor_id,
-	   start_date = :start_date,
-	   end_date = :end_date
+	   start_date = $start_date,
+	   end_date = $end_date
 	   WHERE lab_id = :lab_id
      </querytext>
    </fullquery>
