@@ -39,7 +39,7 @@ select  acs_object_type__create_type (
     'f',
     null,
     null
-   );
+);
 
 select acs_object_type__create_type (
     'lrc_template',
@@ -52,7 +52,7 @@ select acs_object_type__create_type (
     'f',
     null,
     null
-   );
+);
 
 select acs_object_type__create_type (
     'lrc_section',
@@ -65,7 +65,7 @@ select acs_object_type__create_type (
     'f',
     null,
     null
-   );
+);
 
 select acs_object_type__create_type (
     'lrc_resource',
@@ -78,7 +78,20 @@ select acs_object_type__create_type (
     'f',
     null,
     null
-   );
+);
+
+select acs_object_type__create_type (
+    'lrc_feedback_criteria',
+    '#lab-report-central.feedback_criteria#',
+    '#lab-report-central.feedback_criteria#',
+    'acs_object',
+    'lrc_feedback_criteria',
+    'feedback_criteria_id',
+    null,
+    'f',
+    null,
+    null
+);
 
 --
 -- Create tables
@@ -157,6 +170,26 @@ create table lrc_resource (
 	description		text,
 	package_id		integer
 				constraint lrc_resource_package_id_fk
+				references apm_packages (package_id)
+				on delete cascade
+);
+
+create table lrc_feedback_criteria (
+	feedback_criteria_id	integer
+				constraint lrc_feedback_criteria_id_fk
+				references acs_objects (object_id)
+				constraint lrc_feedback_criteria_pk
+				primary key,
+	section_id		integer
+				constraint lrc_feedback_criteria_section_id_fk
+				references lrc_section (section_id)
+				on delete cascade,
+	name			varchar (5120)
+				constraint lrc_feedback_criteria_name_nn
+				not null,
+	description		text,
+	package_id		integer
+				constraint lrc_feedback_criteria_package_id_fk
 				references apm_packages (package_id)
 				on delete cascade
 );
@@ -672,5 +705,123 @@ begin
         	WHERE resource_id = p_resource_id;
 
     	return v_resource_name;
+end;
+' language 'plpgsql';
+
+
+select define_function_args('lrc_feedback_criteria__new','feedback_criteria_id,section_id,name,description,package_id,creation_date;now,creation_user,creation_ip,context_id');
+
+create function lrc_feedback_criteria__new (
+	integer,
+	integer,
+	varchar,
+	text,
+	integer,
+	timestamptz,
+	integer,
+	varchar,
+	integer
+) returns integer as '
+declare
+	p_feedback_criteria_id	alias for $1;        	-- default null
+	p_section_id		alias for $2;
+    	p_name			alias for $3;
+    	p_description           alias for $4;
+	p_package_id		alias for $5;
+    	p_creation_date         alias for $6;        	-- default now()
+    	p_creation_user         alias for $7;        	-- default null
+    	p_creation_ip           alias for $8;		-- default null
+    	p_context_id            alias for $9;		-- default null
+
+    	v_feedback_criteria_id  lrc_feedback_criteria.feedback_criteria_id%TYPE;
+	v_inst_group_id		integer;
+begin
+
+    	v_feedback_criteria_id := acs_object__new (
+        	p_feedback_criteria_id,
+        	''lrc_feedback_criteria'',
+        	p_creation_date,
+        	p_creation_user,
+        	p_creation_ip,
+        	p_context_id
+    	);
+
+    	INSERT INTO lrc_feedback_criteria (
+		feedback_criteria_id,
+       		section_id,
+		name,
+		description,
+	        package_id
+    	) VALUES (
+		v_feedback_criteria_id,
+        	p_section_id,
+		p_name,
+		p_description,
+        	p_package_id
+    	);
+
+    	SELECT group_id into v_inst_group_id
+      	FROM lrc_groups
+        WHERE magic_name = ''instructors'';
+
+	-- Grant permissions to instructors on this object.
+    	PERFORM acs_permission__grant_permission(
+          	v_feedback_criteria_id,
+          	v_inst_group_id,
+	        ''lab_report_central_read''
+    	);
+
+    	PERFORM acs_permission__grant_permission(
+          	v_feedback_criteria_id,
+          	v_inst_group_id,
+          	''lab_report_central_write''
+    	);
+
+    	PERFORM acs_permission__grant_permission(
+          	v_feedback_criteria_id,
+          	v_inst_group_id,
+          	''lab_report_central_admin''
+    	);
+
+    	return v_feedback_criteria_id;
+
+end;' language 'plpgsql';
+
+
+select define_function_args('lrc_feedback_criteria__del','feedback_criteria_id');
+
+create function lrc_feedback_criteria__del (integer)
+returns integer as '
+declare
+	p_feedback_criteria_id          alias for $1;
+begin
+    	raise NOTICE ''Deleting feedback criteria...'';
+
+    	DELETE FROM acs_permissions
+        	WHERE object_id = p_feedback_criteria_id;
+
+    	DELETE FROM lrc_feedback_criteria
+           	WHERE feedback_criteria_id = p_feedback_criteria_id;
+
+    	PERFORM acs_object__delete(p_feedback_criteria_id);
+
+    	return 0;
+
+end;' language 'plpgsql';
+
+
+select define_function_args('lrc_feedback_criteria__name','feedback_criteria_id');
+
+create function lrc_feedback_criteria__name (integer)
+returns varchar as '
+declare
+    	p_feedback_criteria_id      	alias for $1;
+    	v_criteria_name    		lrc_feedback_criteria.name%TYPE;
+begin
+    	SELECT name INTO v_criteria_name
+        	FROM lrc_feedback_criteria
+        	WHERE feedback_criteria_id = p_feedback_criteria_id;
+
+    	return v_criteria_name;
 end;
 ' language 'plpgsql';

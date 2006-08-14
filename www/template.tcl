@@ -36,7 +36,7 @@ set modify_p [permission::permission_p -party_id $user_id \
 		  -object_id $package_id \
 		  -privilege lab_report_central_admin_modify]
 
-db_multirow -extend {details_url resources_url} section select_sections {} {
+db_multirow -extend {details_url resources_url feedback_url} section select_sections {} {
     if { [info exists section_desc] } {
 	set section_desc \
 	    [template::util::richtext::get_property html_value $section_desc]
@@ -46,6 +46,7 @@ db_multirow -extend {details_url resources_url} section select_sections {} {
 
     set details_url [export_vars -url -base section-ae {template_id section_id}]
     set resources_url [export_vars -url -base resources {template_id section_id}]
+    set feedback_url [export_vars -url -base feedback-criteria {template_id section_id}]
 }
 
 set create_section_url [export_vars -url -base section-ae {template_id}]

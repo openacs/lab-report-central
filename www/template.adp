@@ -29,7 +29,7 @@
   <ul>
     <li class="name">@section.section_name@</li>
     <li class="description">@section.section_desc;noquote@</li>
-    <if @create_p@><li class="edit"><a class="button" href="@section.details_url@">#lab-report-central.edit_details#</a> <a class="button" href="@section.resources_url@">#lab-report-central.edit_resources#</a></li></if>
+    <if @create_p@><li class="edit"><a class="button" href="@section.details_url@">#lab-report-central.edit_details#</a> <a class="button" href="@section.resources_url@">#lab-report-central.edit_resources#</a> <a class="button" href="@section.feedback_url@">#lab-report-central.edit_feedback#</a></li></if>
   </ul>
   </multiple>
 </div>

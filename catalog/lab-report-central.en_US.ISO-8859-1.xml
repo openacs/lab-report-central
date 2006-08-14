@@ -2,6 +2,8 @@
 <message_catalog package_key="lab-report-central" package_version="0.1d" locale="en_US" charset="ISO-8859-1">
 
   <msg key="actions">Actions:</msg>
+  <msg key="add_feedback_component">Add Feedback Component</msg>
+  <msg key="add_feedback_criterion">Add Feedback Criterion</msg>
   <msg key="add_instructor">Add Instructor</msg>
   <msg key="add_instructor_to_list">Add instructor to list</msg>
   <msg key="add_lab">Add Lab</msg>
@@ -17,16 +19,24 @@
   <msg key="create_section">Create Section</msg>
   <msg key="create_template">Create Template</msg>
   <msg key="delete">Delete</msg>
+  <msg key="delete_feedback_component">Delete Feedback Component</msg>
   <msg key="delete_resource">Delete Resource</msg>
   <msg key="delete_section">Delete Section</msg>
   <msg key="description">Description</msg>
   <msg key="edit">Edit</msg>
   <msg key="edit_details">Edit Details</msg>
+  <msg key="edit_feedback">Edit Feedback</msg>
+  <msg key="edit_feedback_criterion">Edit Feedback Criterion</msg>
   <msg key="edit_lab">Edit Lab</msg>
   <msg key="edit_resource">Edit Resource</msg>
   <msg key="edit_resources">Edit Resources</msg>
   <msg key="edit_section">Edit Section</msg>
   <msg key="edit_template">Edit Template</msg>
+  <msg key="feedback_criteria">Feedback Criteria</msg>
+  <msg key="feedback_criteria_for_section_name">Feedback criteria for %section_name%</msg>
+  <msg key="feedback_criteria_for_this_section">Feedback criteria for this section:</msg>
+  <msg key="help_enter_feedback_criterion_description">Enter a description for the feedback criterion.</msg>
+  <msg key="help_enter_feedback_criterion_name">Enter a name for the feedback criterion.</msg>
   <msg key="help_enter_lab_description">Enter lab description.</msg>
   <msg key="help_enter_lab_end_date">Enter the last day of the lab.</msg>
   <msg key="help_enter_lab_name">Enter name for lab.</msg>
@@ -58,6 +68,7 @@
   <msg key="no_report_templates_created">No report templates have been created.</msg>
   <msg key="no_students_added">No students have been added to this lab.</msg>
   <msg key="no_templates_created">No templates have been created.</msg>
+  <msg key="notice_currently_no_feedback_criteria">There are currently no feedback criteria allocated to this section. Feedback criterion can be added by clicking on the add feedback button below.</msg>
   <msg key="notice_currently_no_resources">There are currently no resources allocated to this section.  Resources can be added by clicking on the add resource button below.</msg>
   <msg key="notice_currently_no_sections">There are currently no sections allocated to this report template. Sections can be added by clicking on the add section button below.</msg>
   <msg key="remove">Remove</msg>
@@ -80,6 +91,8 @@
   <msg key="view">View</msg>
   <msg key="view_instructors">View Instructors</msg>
   <msg key="view_report_templates">View Report Templates</msg>
+  <msg key="visit_resource">Visit Resource</msg>
+  <msg key="want_to_delete_feedback_component">Continue with deleting the feedback component?</msg>
   <msg key="want_to_delete_instructor">Continue with deleting the instructor?</msg>
   <msg key="want_to_delete_lab">Continue with deleting the lab?</msg>
   <msg key="want_to_delete_resource">Continue with deleting the resource?</msg>

@@ -17,7 +17,7 @@
   <ul>
     <li class="name">@resource.resource_name@</li>
     <li class="description">@resource.resource_desc;noquote@</li>
-    <li class="edit"><if @create_p@><a class="button" href="@resource.details_url@">#lab-report-central.edit_details#</a></if> <a class="button" href="@resource.resource_url@" target="_blank">Visit Resource</a></li>
+    <li class="edit"><if @create_p@><a class="button" href="@resource.details_url@">#lab-report-central.edit_details#</a></if> <a class="button" href="@resource.resource_url@" target="_blank">#lab-report-central.visit_resource#</a></li>
   </ul>
   </multiple>
 </div>
