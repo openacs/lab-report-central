@@ -13,6 +13,7 @@
      <querytext>
        UPDATE lrc_feedback_criteria
            SET name = :name,
+           url = :url,
 	   description = :description
 	   WHERE feedback_criteria_id = :feedback_criteria_id
      </querytext>

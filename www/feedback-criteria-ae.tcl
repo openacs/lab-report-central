@@ -45,15 +45,19 @@ ad_form -name criterion -cancel_url $return_url -form {
 	{label "[_ lab-report-central.name]" }
 	{help_text "[_ lab-report-central.help_enter_feedback_criterion_name]"}
     }
+    {url:text,optional
+	{html {size 50}}
+	{label "[_ lab-report-central.URL]" }
+	{help_text "[_ lab-report-central.help_enter_resource_url]"}
+    }
     {description:richtext(richtext),optional
 	{label "[_ lab-report-central.description]" }
 	{help_text "[_ lab-report-central.help_enter_feedback_criterion_description]"}
-	{html {cols 48 rows 6}}
-	{htmlarea_p 0}
+	{html {cols 80 rows 20}}
 	{nospell}
     }
 } -select_query {
-    SELECT name, description
+    SELECT name, url, description
     FROM lrc_feedback_criteria
     WHERE feedback_criteria_id = :feedback_criteria_id
 } -new_data {
@@ -62,6 +66,7 @@ ad_form -name criterion -cancel_url $return_url -form {
         -var_list [list [list package_id $package_id] \
 		       [list section_id $section_id] \
 		       [list name $name] \
+		       [list url $url] \
 		       [list description $description]] \
         -form_id criterion lrc_feedback_criteria
 

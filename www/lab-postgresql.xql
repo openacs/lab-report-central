@@ -16,7 +16,9 @@
    <fullquery name="rt">
      <querytext>
        SELECT t.template_id, t.name AS template_name,
-           t.description AS template_desc
+           t.description AS template_desc,
+           to_char(m.start_date, 'DD Month, YYYY') AS release_date,
+           to_char(m.end_date, 'DD Month, YYYY') AS submission_date
        FROM lrc_template t, lrc_lab_template_map m
        WHERE m.lab_id = :lab_id
        AND m.template_id = t.template_id

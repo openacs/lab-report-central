@@ -39,6 +39,7 @@
   <ul class="report">
     <li>
       <span class="label">@rt.template_name@</span>
+      <span class="dates">[Release: @rt.release_date@] [Submission: @rt.submission_date@]</span>
       <span class="options">
       <a class="button" href="@rt.view_url@">#lab-report-central.view#</a>
       <if @admin_p@><a class="button" href="@rt.delete_url@" onclick="return confirm('#lab-report-central.want_to_remove_template#')">#lab-report-central.remove#</a></if>

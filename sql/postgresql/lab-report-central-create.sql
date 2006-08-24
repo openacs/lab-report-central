@@ -187,6 +187,7 @@ create table lrc_feedback_criteria (
 	name			varchar (5120)
 				constraint lrc_feedback_criteria_name_nn
 				not null,
+	url			varchar (5120),
 	description		text,
 	package_id		integer
 				constraint lrc_feedback_criteria_package_id_fk
@@ -214,7 +215,9 @@ create table lrc_lab_template_map (
 	template_id		integer
 				constraint lrc_lt_map_template_id_fk
 				references lrc_template (template_id)
-				on delete cascade
+				on delete cascade,
+	start_date		timestamptz,
+	end_date		timestamptz
 );
 
 create table lrc_lab_student_map (
@@ -709,11 +712,12 @@ end;
 ' language 'plpgsql';
 
 
-select define_function_args('lrc_feedback_criteria__new','feedback_criteria_id,section_id,name,description,package_id,creation_date;now,creation_user,creation_ip,context_id');
+select define_function_args('lrc_feedback_criteria__new','feedback_criteria_id,section_id,name,url,description,package_id,creation_date;now,creation_user,creation_ip,context_id');
 
 create function lrc_feedback_criteria__new (
 	integer,
 	integer,
+	varchar,
 	varchar,
 	text,
 	integer,
@@ -726,12 +730,13 @@ declare
 	p_feedback_criteria_id	alias for $1;        	-- default null
 	p_section_id		alias for $2;
     	p_name			alias for $3;
-    	p_description           alias for $4;
-	p_package_id		alias for $5;
-    	p_creation_date         alias for $6;        	-- default now()
-    	p_creation_user         alias for $7;        	-- default null
-    	p_creation_ip           alias for $8;		-- default null
-    	p_context_id            alias for $9;		-- default null
+        p_url			alias for $4;
+    	p_description           alias for $5;
+	p_package_id		alias for $6;
+    	p_creation_date         alias for $7;        	-- default now()
+    	p_creation_user         alias for $8;        	-- default null
+    	p_creation_ip           alias for $9;		-- default null
+    	p_context_id            alias for $10;		-- default null
 
     	v_feedback_criteria_id  lrc_feedback_criteria.feedback_criteria_id%TYPE;
 	v_inst_group_id		integer;
@@ -750,12 +755,14 @@ begin
 		feedback_criteria_id,
        		section_id,
 		name,
+		url,
 		description,
 	        package_id
     	) VALUES (
 		v_feedback_criteria_id,
         	p_section_id,
 		p_name,
+		p_url,
 		p_description,
         	p_package_id
     	);

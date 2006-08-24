@@ -37,6 +37,16 @@ ad_form -name attach_template -cancel_url $return_url -form {
  	{options "[lab_report_central::unmapped_templates_get_options \
 		      -lab_id $lab_id]"}
     }
+    {start_date:date,to_sql(sql_date),to_html(display_date)
+	{label "[_ lab-report-central.lab_start_date]" }
+	{help_text "[_ lab-report-central.help_enter_lab_start_date]"}
+	{format "[lc_get formbuilder_date_format]"}
+    }
+    {end_date:date,to_sql(sql_date),to_html(display_date)
+	{label "[_ lab-report-central.lab_end_date]" }
+	{help_text "[_ lab-report-central.help_enter_lab_end_date]"}
+	{format "[lc_get formbuilder_date_format]"}
+    }
 } -after_submit {
     # Map report template to lab.
     db_dml attach_template {}

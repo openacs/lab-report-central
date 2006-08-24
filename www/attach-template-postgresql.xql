@@ -13,8 +13,10 @@
 
    <fullquery name="attach_template">
      <querytext>
-       INSERT INTO lrc_lab_template_map (lab_id, template_id)
-       VALUES (:lab_id, :template_id)
+       INSERT INTO lrc_lab_template_map (
+           lab_id, template_id, start_date, end_date
+       )
+       VALUES (:lab_id, :template_id, $start_date, $end_date)
      </querytext>
    </fullquery>
 

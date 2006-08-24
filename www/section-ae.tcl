@@ -45,8 +45,7 @@ ad_form -name section -cancel_url $return_url -form {
     {description:richtext(richtext),optional
 	{label "[_ lab-report-central.description]" }
 	{help_text "[_ lab-report-central.help_enter_section_description]"}
-	{html {cols 48 rows 6}}
-	{htmlarea_p 0}
+	{html {cols 80 rows 20}}
 	{nospell}
     }
 } -select_query {

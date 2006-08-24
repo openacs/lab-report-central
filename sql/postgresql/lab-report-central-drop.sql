@@ -29,6 +29,7 @@ drop function lrc_feedback_criteria__new (
 	integer,
 	integer,
 	varchar,
+        varchar,
 	text,
 	integer,
 	timestamptz,
