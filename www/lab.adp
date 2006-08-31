@@ -27,9 +27,10 @@
   </table>
 </div>
 
+<if @lab_instructor_p@>
 <h3>#lab-report-central.lab_report_templates#</h3>
 <div id="lrc-report-container">
-  <if @admin_p@>
+  <if @show_buttons_p@>
   <ul>
     <li><a class="button" href="@create_url@">#lab-report-central.attach_template#</a></li>
   </ul>
@@ -40,10 +41,12 @@
     <li>
       <span class="label">@rt.template_name@</span>
       <span class="dates">[Release: @rt.release_date@] [Submission: @rt.submission_date@]</span>
+      <if @show_buttons_p@>
       <span class="options">
       <a class="button" href="@rt.view_url@">#lab-report-central.view#</a>
-      <if @admin_p@><a class="button" href="@rt.delete_url@" onclick="return confirm('#lab-report-central.want_to_remove_template#')">#lab-report-central.remove#</a></if>
+      <a class="button" href="@rt.delete_url@" onclick="return confirm('#lab-report-central.want_to_remove_template#')">#lab-report-central.remove#</a>
       </span>
+      </if>
       <div class="spacer"></div>
     </li>
   </ul>
@@ -54,19 +57,32 @@
   </if>
 </div>
 
-<if @admin_p@>
-<h3>#lab-report-central.students#</h3>
+
+<h3>#lab-report-central.class_list#</h3>
 <div id="lrc-report-container">
+<ul>
+<li><a class="button" href="@view_students_url@">#lab-report-central.view_students#</a></li>
+</ul>
+</div>
+</if>
+
+<if @marker_p@>
+<h3>#lab-report-central.marking_group#</h3>
+<div id="lrc-report-container">
+
+  <if @lab_instructor_p@>
   <ul>
-    <li><a class="button" href="@add_student_url@">#lab-report-central.add_student#</a></li>
+    <li><a class="button" href="@create_group_url@">#lab-report-central.create_groups#</a></li>
   </ul>
+  </if>
+
 
   <multiple name="student">
   <ul class="report">
     <li>
       <span class="label">@student.first_names@ @student.last_name@ (@student.email@)</span>
       <span class="options">
-      <a class="button" href="@student.rem_student_url@" onclick="return confirm('#lab-report-central.want_to_remove_student#')">#lab-report-central.remove#</a>
+      <a class="button" href="@student.dotfolio_url@">#lab-report-central.view_reports#</a>
       </span>
       <div class="spacer"></div>
     </li>

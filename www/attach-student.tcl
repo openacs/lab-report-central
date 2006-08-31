@@ -19,7 +19,7 @@ permission::require_permission -party_id $user_id -object_id $package_id \
     -privilege lab_report_central_admin
 
 if { ![info exists return_url] } {
-    set return_url [export_vars -url -base lab {lab_id}]
+    set return_url [export_vars -url -base students {lab_id}]
 }
 
 set lab_name [db_string lab_name {} -default ""]

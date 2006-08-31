@@ -33,8 +33,7 @@ ad_form -name lab -cancel_url $return_url -form {
     {description:richtext(richtext),optional
 	{label "[_ lab-report-central.description]" }
 	{help_text "[_ lab-report-central.help_enter_lab_description]"}
-	{html {cols 48 rows 6}}
-	{htmlarea_p 0}
+	{html {cols 80 rows 12}}
 	{nospell}
     }
     {instructor_id:search

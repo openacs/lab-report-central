@@ -13,8 +13,8 @@ set user_id [ad_conn user_id]
 
 db_1row lab_details {}
 
-set page_title $name
-set context [list $page_title]
+set page_title "$name - [_ lab-report-central.class_list]"
+set context [list [list [export_vars -url -base lab {lab_id}] $name] [_ lab-report-central.class_list]]
 
 if { [info exists description] } {
     set description [template::util::richtext::get_property html_value \
@@ -23,29 +23,19 @@ if { [info exists description] } {
     set description ""
 }
 
-db_multirow -extend { view_url edit_url delete_url } rt rt {} {
-    set view_url [export_vars -url -base template {template_id}]
-    set edit_url [export_vars -url -base template-ae {lab_id}]
-    set delete_url [export_vars -url \
-			-base detach-template {lab_id template_id}]
-}
-
-set create_url [export_vars -url -base attach-template { lab_id }]
-
-set marker_p [permission::permission_p -party_id $user_id \
+set admin_p [permission::permission_p -party_id $user_id \
 		  -object_id $package_id \
 		  -privilege lab_report_central_admin]
 
 set add_student_url [export_vars -url -base attach-student {lab_id}]
 
-# Select all students that belong to the marker that is viewing this page.
-db_multirow -extend {dotfolio_url} student select_marking_group {} {
+db_multirow -extend {rem_student_url dotfolio_url} student select_students {} {
+    set rem_student_url [export_vars -url -base detach-student {lab_id student_id}]
+
     set dotfolio_base_url "[dotfolio::user::dotfolio_url -user_id $student_id]"
     set dotfolio_url [export_vars -url \
 			  -base "${dotfolio_base_url}pracs/view-lab" {lab_id}]
 }
-
-set view_students_url [export_vars -url -base students {lab_id}]
 
 # Is the user the instructor that the lab is assigned to?
 set lab_instructor_p 0
@@ -57,7 +47,5 @@ set show_buttons_p 0
 if { $lab_instructor_p } {
     set show_buttons_p 1
 }
-
-set create_group_url [export_vars -url -base groups {lab_id}]
 
 ad_return_template
