@@ -27,7 +27,7 @@ set admin_p [permission::permission_p -party_id $user_id \
 		  -object_id $package_id \
 		  -privilege lab_report_central_admin]
 
-set add_student_url [export_vars -url -base attach-student {lab_id}]
+set add_student_url [export_vars -url -base students-admin {lab_id}]
 
 db_multirow -extend {rem_student_url dotfolio_url} student select_students {} {
     set rem_student_url [export_vars -url -base detach-student {lab_id student_id}]

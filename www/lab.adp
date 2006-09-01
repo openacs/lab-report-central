@@ -78,15 +78,18 @@
 
 
   <multiple name="student">
-  <ul class="report">
-    <li>
-      <span class="label">@student.first_names@ @student.last_name@ (@student.email@)</span>
-      <span class="options">
-      <a class="button" href="@student.dotfolio_url@">#lab-report-central.view_reports#</a>
-      </span>
-      <div class="spacer"></div>
-    </li>
-  </ul>
+  <h3>@student.group_name@</h3>
+  <group column="group_name">
+    <ul class="report">
+      <li>
+        <span class="label">@student.first_names@ @student.last_name@ (@student.email@)</span>
+        <span class="options">
+        <a class="button" href="@student.dotfolio_url@">#lab-report-central.view_reports#</a>
+        </span>
+        <div class="spacer"></div>
+      </li>
+    </ul>
+  </group>
   </multiple>
 
   <if @student:rowcount@ eq 0>

@@ -30,14 +30,14 @@
 
    <fullquery name="select_marking_group">
      <querytext>
-       SELECT u.user_id AS student_id, u.first_names, u.last_name, u.email
-       FROM cc_users u, lrc_lab_student_map s, lrc_marker_group_map g,
-           group_member_map m
+       SELECT u.user_id AS student_id, u.first_names, u.last_name, u.email,
+           gs.group_name
+       FROM cc_users u, lrc_marker_group_map g, group_member_map m, groups gs
        WHERE u.user_id = m.member_id 
-       AND s.lab_id = :lab_id
-       AND g.lab_id = s.lab_id
+       AND g.lab_id = :lab_id
        AND g.marker_id = :user_id
        AND g.group_id = m.group_id
+       AND gs.group_id = g.group_id
      </querytext>
    </fullquery>
 

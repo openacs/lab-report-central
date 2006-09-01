@@ -20,7 +20,7 @@
 <property name="title">#lab-report-central.group_members_admin#</property>
 <property name="context">@context;noquote@</property>
 
-#lab-report-central.members_of_group#
+#lab-report-central.members_of_group#: @group_name@
 <center>
   <listtemplate name="group_members"></listtemplate>
 </center>
